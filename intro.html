@@ -331,6 +331,10 @@ fn main() {
     }
 }
 ```
+What happens if we take out the `_` case?
+
+Playground link: https://goo.gl/5Ubgts
+
 
 ???
 
@@ -418,6 +422,7 @@ println!("All the prices are: {:?}", prices);
 * `vec!` shorthand macro, the rest is like an array
 * Vecs can change in size at runtime
 * So we can call the `push` method
+* What happens when you access data at an out of bounds index?
 
 ---
 class: middle, left
@@ -452,7 +457,7 @@ class: middle, left
 
 ## Iterators
 
-```
+```rust
 for i in (0..10).filter(|x| x % 2 == 0) {
     println!("i = {}", i);
 }
@@ -542,11 +547,24 @@ enum Option<T> {
     None
 }
 ```
+T here is a *generic type parameter* - `Some` can hold any type.
+
+Run this in the Rust Playground! play.rust-lang.org
+
+```rust
+fn main() {
+  let a = Some(32);
+  println!("{:?}", a);
+  let b = None;
+  println!("{:?}", b);
+}
+```
 
 ???
 
 * T is a generic type parameter, means Some can hold any type
 * No more undefined method on nil!!!!
+* Why is this useful? Compare this with nulls in Java/C etc.
 
 ---
 class: middle, left
@@ -554,7 +572,7 @@ class: middle, left
 ## Using Option
 
 ```rust
-let mut instructors = vec!["Carol"];
+let mut instructors = vec!["Katharina"];
 
 let a = instructors.pop();
 println!("a is {:?}", a);
@@ -573,7 +591,7 @@ class: middle, left
 ## Using Option
 
 ```rust
-let a = Some("Carol");
+let a = Some("Arshia");
 
 let name = a.expect("No name present");
 println!("Name is {} bytes long", name.len());
@@ -636,13 +654,15 @@ class: middle, left
 
 ```rust
 let numstr = "6";
-let num = numstr.parse::<i32>();
+let num = numstr.parse::<i32>(); // turbofish syntax!
 println!("num = {:?}", num);
 
 let numstr = "florp";
 let num = numstr.parse::<i32>();
 println!("num = {:?}", num);
 ```
+
+What does this print? Rust Playground link: https://goo.gl/aNkdHZ
 
 ???
 
@@ -831,7 +851,7 @@ fn fizz(num: u32) -> String {
 }
 ```
 
-Play: https://goo.gl/yNcyTG
+Playground link: https://goo.gl/yNcyTG
 
 ???
 
