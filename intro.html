@@ -30,6 +30,7 @@ class: middle, center
 * Welcome to the 8th Rustbridge IN THE WORLD
     * 2016: Berlin, Pittsburgh
     * 2017: Kyiv, Mexico City, Portland, Zurich, Columbus
+    * 2018: Waterloo, Paris
 * This curriculum is still being developed and we love feedback!
 
 ---
@@ -377,12 +378,17 @@ class: middle, left
 * My favorite: `{:#?}` = pretty debug
 * [`fmt` docs](https://doc.rust-lang.org/stable/std/fmt/index.html)
 
+???
+* Printing is handled by a series of macros defined in std::fmt - println! is the most common.
+* markers that handle the way text is displayed: such as {} and {:?}
+      
 ---
 class: middle, left
 
 ## Quick but Useful Tangent #2: `panic!`
 
-* Panic stops your program with a message.
+* Panic stops your program with a message - terminates immediately - provides feedback to the caller.
+* program has reached a problem it cannot recover from.
 
 ```rust
 fn main() {
@@ -400,7 +406,7 @@ println!("The 10th element is {:?}", color[index]);
 
 ???
 
-* It's a `panic!` behind the scenes!
+* It's a `panic!` behind the scenes! - allows the program to terminate IMMEDIATELY
 * This has to do with safety-- don't continue with bad data!
 
 ---
@@ -419,8 +425,9 @@ println!("All the prices are: {:?}", prices);
 
 ???
 
+* a vector in rust is like a growable array type - size can be changed at runtime
 * `vec!` shorthand macro, the rest is like an array
-* Vecs can change in size at runtime
+* triplet of size, capacity and pointer to memory on the head
 * So we can call the `push` method
 * What happens when you access data at an out of bounds index?
 
